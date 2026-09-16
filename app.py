@@ -134,7 +134,7 @@ def make_request(encrypt, region, token):
         elif region in {"BR", "US", "SAC", "NA"}:
             url = "https://client.us.freefiremobile.com/GetPlayerPersonalShow"
         else:
-            url = "https://loginbp.ppmainecoonghj.com/GetPlayerPersonalShow"
+            url = "https://loginbp.ggpolarbear.com/GetPlayerPersonalShow"
         edata = bytes.fromhex(encrypt)
         headers = {
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; ASUS_Z01QD Build/PI)",
