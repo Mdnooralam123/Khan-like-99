@@ -77,7 +77,7 @@ async def send_request(encrypted_uid, token, url):
             "Expect": "100-continue",
             "X-Unity-Version": "2018.4.11f1",
             "X-GA": "v1 1",
-            "ReleaseVersion": "OB55"
+            "ReleaseVersion": "OB54"
         }
         async with aiohttp.ClientSession() as session:
             async with session.post(url, data=edata, headers=headers) as response:
@@ -134,7 +134,7 @@ def make_request(encrypt, region, token):
         elif region in {"BR", "US", "SAC", "NA"}:
             url = "https://client.us.freefiremobile.com/GetPlayerPersonalShow"
         else:
-            url = "https://loginbp.ggpolarbear.com/GetPlayerPersonalShow"
+            url = "https://clientbp.ggpolarbear.com/GetPlayerPersonalShow"
         edata = bytes.fromhex(encrypt)
         headers = {
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; ASUS_Z01QD Build/PI)",
@@ -145,7 +145,7 @@ def make_request(encrypt, region, token):
             "Expect": "100-continue",
             "X-Unity-Version": "2018.4.11f1",
             "X-GA": "v1 1",
-            "ReleaseVersion": "OB55"
+            "ReleaseVersion": "OB54"
         }
         response = requests.post(url, data=edata, headers=headers, verify=False)
         binary = response.content
