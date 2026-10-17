@@ -21,11 +21,9 @@ jobs:
           python-version: '3.11'
 
       - name: Install Dependencies
-        run: pip install requests
+        run: pip install requests urllib3
 
       - name: Generate JWT Tokens
-        env:
-          ACCESS_TOKENS: ${{ secrets.ACCESS_TOKENS }}
         run: python generate_tokens.py
 
       - name: Commit & Push
