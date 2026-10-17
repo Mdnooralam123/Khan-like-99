@@ -1,0 +1,41 @@
+name: Auto Update token_ind.json
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-tokens:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: pip install requests
+
+      - name: Generate JWT Tokens
+        env:
+          ACCESS_TOKENS: ${{ secrets.ACCESS_TOKENS }}
+        run: python generate_tokens.py
+
+      - name: Commit & Push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add token_ind.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-update token_ind.json - $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
