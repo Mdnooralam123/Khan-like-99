@@ -16,11 +16,11 @@ app = Flask(__name__)
 
 # ✅ Valid API keys
 VALID_API_KEYS = {
-    "NOOR"  # don't change warna api or bot dono nhi chalega 
+    "AALAM"  # don't change warna api or bot dono nhi chalega 
 }
 
 # 🔢 Like limit tracking
-daily_limit = 30
+daily_limit = 12
 used_count = 0
 
 
